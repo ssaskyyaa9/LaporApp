@@ -29,6 +29,4 @@ app.use("/api/kategori", kategoriRouter)
 app.use("/api/statistik", jwtMiddleware, statistikRouter)
 app.use('/uploads', express.static('uploads'));
 
-app.listen(port, () => {
-  console.log(`Server jalan di http://localhost:${port}`)
-})
+export default app;
