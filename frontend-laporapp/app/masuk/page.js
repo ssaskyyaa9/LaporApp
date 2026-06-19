@@ -148,7 +148,7 @@ export default function HalamanMasuk() {
   );
 }
 
-export default function MasukPage() {
+export default function LoginPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <LoginContent />
