@@ -15,7 +15,7 @@ import cors from "cors";
 const app = express()
 const port = 5000
 
-app.use(cors({ origin: [ "http://localhost:3000", "192.168.235.56:8081" ] }));
+app.use(cors({ origin: "*", methods: ["GET", "POST", "PUT", "DELETE"], credentials: true }));
 app.use(express.json())
 app.use('/uploads', express.static('uploads'))
 app.use("/api/auth", authRouter)
