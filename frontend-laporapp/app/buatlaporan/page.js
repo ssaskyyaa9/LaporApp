@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -18,7 +18,7 @@ const KATEGORI_LIST = [
   { id: 5, label: "Lainnya",                 aktif: "bg-[#E8E4FC] text-[#7357E5] border-transparent",   nonaktif: "bg-white text-gray-500 border-gray-200 hover:border-purple-300" },
 ];
 
-export default function HalamanBuatLaporan() {
+function IsiHalamanBuatLaporan() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const editId = searchParams.get("edit");
@@ -335,6 +335,7 @@ export default function HalamanBuatLaporan() {
               <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
                 <Image src="/assets/icons/notifhitam.png" alt="Notifikasi" width={20} height={20} />
               </div>
+
               {unread > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                   {unread > 9 ? "9+" : unread}
@@ -347,6 +348,7 @@ export default function HalamanBuatLaporan() {
                 <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold shrink-0 overflow-hidden">
                   {user.foto ? <img src={`${BASE_URL}/uploads/${user.foto}`} alt="foto" className="w-full h-full object-cover" /> : inisial}
                 </div>
+
                 <span className="text-sm font-semibold text-gray-700 hidden md:block">{user.username}</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className={`transition-transform duration-200 ${dropdownTerbuka ? "rotate-180" : ""}`}>
                   <path d="M3 5l4 4 4-4" stroke="#6b7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -360,20 +362,22 @@ export default function HalamanBuatLaporan() {
                       <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold overflow-hidden">
                         {user.foto ? <img src={`${BASE_URL}/uploads/${user.foto}`} alt="foto" className="w-full h-full object-cover" /> : inisial}
                       </div>
+
                       <div>
                         <p className="text-sm font-semibold text-gray-800">{user.username}</p>
                         <span className="inline-block text-xs bg-blue-50 text-blue-600 font-semibold px-2 py-0.5 rounded-full capitalize">{user.role}</span>
                       </div>
                     </div>
                   </div>
+
                   <div className="py-1">
                     <Link href="/profile" onClick={() => setDropdownTerbuka(false)}
                       className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors text-sm text-gray-700">
-                      <Image src="/assets/icons/profile (2).png" alt="Profil" width={16} height={16} /> Profil Saya
+                      <Image src="/assets/icons/profile (2).png" alt="Profil" width={16} height={16}/> Profil Saya
                     </Link>
-                    <button onClick={tanganiKeluar}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-red-50 transition-colors text-sm text-red-500">
-                      <Image src="/assets/icons/keluar.png" alt="Keluar" width={16} height={16} /> Keluar
+
+                    <button onClick={tanganiKeluar} className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-red-50 transition-colors text-sm text-red-500">
+                      <Image src="/assets/icons/keluar.png" alt="Keluar" width={16} height={16}/> Keluar
                     </button>
                   </div>
                 </div>
@@ -385,24 +389,17 @@ export default function HalamanBuatLaporan() {
         <div className="p-6 -mt-4">
           <div className="relative bg-white rounded-2xl mb-6 overflow-hidden flex items-center" style={{ minHeight: 150 }}>
             <div className="px-8 py-6 z-10 max-w-lg">
-              <p className="text-blue-500 text-xs font-semibold mb-1 tracking-wide">
-                {isEditMode ? "Edit Laporan" : "Buat Laporan Baru"}
-              </p>
-              <h2 className="text-2xl font-bold text-gray-900 leading-snug mb-2">
-                {isEditMode ? "Perbarui laporanmu" : "Apa yang ingin"}<br />
-                {isEditMode ? "di sini." : "kamu laporkan?"}
-              </h2>
+              <p className="text-blue-500 text-xs font-semibold mb-1 tracking-wide"> {isEditMode ? "Edit Laporan" : "Buat Laporan Baru"} </p>
+              <h2 className="text-2xl font-bold text-gray-900 leading-snug mb-2"> {isEditMode ? "Perbarui laporanmu" : "Apa yang ingin"}<br /> {isEditMode ? "di sini." : "kamu laporkan?"} </h2>
               <p className="text-gray-500 text-xs leading-relaxed mb-4">
-                {isEditMode
-                  ? "Ubah detail laporan sesuai kebutuhan, lalu klik Kirim Laporan."
-                  : "Laporkan masalah di lingkunganmu dengan cepat\ndan mudah. Setiap laporan akan kami tindak lanjuti."
-                }
+                {isEditMode ? "Ubah detail laporan sesuai kebutuhan, lalu klik Kirim Laporan." : "Laporkan masalah di lingkunganmu dengan cepat\ndan mudah. Setiap laporan akan kami tindak lanjuti." }
               </p>
-              <Link href="/riwayatlaporan"
-                className="inline-flex items-center gap-1.5 text-xs text-gray-800 font-medium border border-blue-500 bg-white px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors">
-                <Image src="/assets/icons/buatyuk.png" alt="" width={13} height={13} /> Lihat Laporanku
+
+              <Link href="/riwayatlaporan" className="inline-flex items-center gap-1.5 text-xs text-gray-800 font-medium border border-blue-500 bg-white px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors">
+                <Image src="/assets/icons/buatyuk.png" alt="" width={13} height={13}/> Lihat Laporanku
               </Link>
             </div>
+
             <div className="absolute right-19 bottom-0 hidden md:block">
               <Image src="/assets/gambar/karakterlaporan.png" alt="Banner" width={320} height={190} className="object-contain object-bottom" />
             </div>
@@ -424,8 +421,7 @@ export default function HalamanBuatLaporan() {
                   <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1">
                     {KATEGORI_LIST.map((k) => (
                       <button key={k.id} onClick={() => setKategoriId(k.id)}
-                        className={`px-3.5 py-2.5 rounded-lg text-xs font-semibold border transition-all whitespace-nowrap shrink-0 ${kategoriId === k.id ? k.aktif : k.nonaktif}`}>
-                        {k.label}
+                        className={`px-3.5 py-2.5 rounded-lg text-xs font-semibold border transition-all whitespace-nowrap shrink-0 ${kategoriId === k.id ? k.aktif : k.nonaktif}`}> {k.label}
                       </button>
                     ))}
                   </div>
@@ -436,6 +432,7 @@ export default function HalamanBuatLaporan() {
                     <label className="block text-sm font-bold text-gray-700">C. Deskripsi Laporan</label>
                     <span className={`text-xs font-medium ${deskripsi.length >= 480 ? "text-red-400" : "text-gray-400"}`}>{deskripsi.length}/500</span>
                   </div>
+
                   <textarea value={deskripsi} onChange={(e) => { if (e.target.value.length <= 500) setDeskripsi(e.target.value); }} rows={4}
                     placeholder="Jelaskan laporan secara jelas dan jujur, bisa disertakan dengan kronologis"
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-all placeholder:text-gray-300 resize-none"
@@ -469,9 +466,7 @@ export default function HalamanBuatLaporan() {
                         placeholder="Cari alamat atau nama tempat..."
                         className="flex-1 text-sm text-gray-700 outline-none placeholder:text-gray-400 bg-transparent"
                       />
-                      {cariLoading && (
-                        <div className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin shrink-0" />
-                      )}
+                      {cariLoading && ( <div className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin shrink-0" /> )}
                     </div>
 
                     {searchResults.length > 0 && (
@@ -483,6 +478,7 @@ export default function HalamanBuatLaporan() {
                               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                               <circle cx="12" cy="9" r="2.5" />
                             </svg>
+
                             <div className="min-w-0">
                               <p className="text-sm font-semibold text-gray-800 truncate">{item.display_name.split(",")[0]}</p>
                               <p className="text-xs text-gray-400 truncate">{item.display_name}</p>
@@ -520,8 +516,7 @@ export default function HalamanBuatLaporan() {
                         <div key={i} className="relative w-20 h-20 rounded-xl overflow-hidden border border-gray-200 group">
                           <img src={src} alt={`Gambar ${i + 1}`} className="w-full h-full object-cover" />
                           <button onClick={() => hapusGambar(i)}
-                            className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xl font-bold">
-                            ×
+                            className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xl font-bold"> ×
                           </button>
                         </div>
                       ))}
@@ -548,8 +543,7 @@ export default function HalamanBuatLaporan() {
 
                 <div className="flex items-center justify-between pt-2">
                   <button onClick={() => router.push("/riwayatlaporan")}
-                    className="px-6 py-2 rounded-lg border border-red-400 text-sm font-semibold text-red-500 hover:bg-red-50 transition-colors">
-                    Batal
+                    className="px-6 py-2 rounded-lg border border-red-400 text-sm font-semibold text-red-500 hover:bg-red-50 transition-colors"> Batal
                   </button>
 
                   <button onClick={handleSubmit} disabled={mengirim}
@@ -584,6 +578,7 @@ export default function HalamanBuatLaporan() {
                           <div className="w-0.5 bg-gray-100 my-1" style={{ minHeight: 32 }} />
                         )}
                       </div>
+                      
                       <div className="pb-4">
                         <p className={`text-sm font-semibold leading-tight ${step.aktif ? "text-blue-600" : "text-gray-500"}`}>{step.label}</p>
                         <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{step.desc}</p>
@@ -595,9 +590,9 @@ export default function HalamanBuatLaporan() {
 
               <div className="bg-green-50 rounded-2xl border border-green-100 p-5">
                 <h3 className="font-bold text-green-600 text-sm mb-8 flex items-center gap-4">
-                  <Image src="/assets/icons/tips.png" alt="tips" width={18} height={18} />
-                  Tips laporan yang baik
+                  <Image src="/assets/icons/tips.png" alt="tips" width={18} height={18}/> Tips laporan yang baik
                 </h3>
+
                 <ul className="flex flex-col gap-5">
                   {[
                     "Jelaskan masalah dengan jelas dan detail",
@@ -619,11 +614,9 @@ export default function HalamanBuatLaporan() {
                     <p className="text-black text-xs font-semibold leading-relaxed mb-4">
                       Jika kamu mengalami kendala dalam menggunakan web LaporApp, silahkan hubungi kami melalui halaman bantuan.
                     </p>
-                    <Link href="/bantuan"
-                      className="inline-flex items-center gap-2 mt-1 border-2 border-blue-700 text-blue-500 bg-white text-xs font-semibold px-4 py-2.5 rounded-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors">
-                      Hubungi Kami
-                    </Link>
+                    <Link href="/bantuan" className="inline-flex items-center gap-2 mt-1 border-2 border-blue-700 text-blue-500 bg-white text-xs font-semibold px-4 py-2.5 rounded-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"> Hubungi Kami </Link>
                   </div>
+
                   <div className="shrink-0 self-end">
                     <Image src="/assets/icons/bantuan.png" alt="bantuan" width={53} height={53} className="object-contain" />
                   </div>
@@ -634,5 +627,13 @@ export default function HalamanBuatLaporan() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function HalamanBuatLaporan() {
+  return (
+    <Suspense fallback={null}>
+      <IsiHalamanBuatLaporan />
+    </Suspense>
   );
 }
