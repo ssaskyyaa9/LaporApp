@@ -1,0 +1,6 @@
+node_modules
+.env
+.env.local
+backend-laporApp/node_modules
+frontend-laporapp/node_modules
+frontend-laporapp/.next
