@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://lapor-app-six.vercel.app";
 
 export async function daftarPengguna({ username, email, password }) {
   const res = await fetch(`${BASE_URL}/api/auth/register`, {
