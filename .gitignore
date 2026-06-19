@@ -4,3 +4,5 @@ node_modules
 backend-laporApp/node_modules
 frontend-laporapp/node_modules
 frontend-laporapp/.next
+mobile-laporapp/node_modules
+mobile-laporapp/.expo
