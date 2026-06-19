@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const BASE_URL = "http://192.168.235.56:5000";
+export const BASE_URL = "https://lapor-app-six.vercel.app";
 
 // ─── Token ────────────────────────────────────────────────
 
