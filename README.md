@@ -14,5 +14,5 @@ Platform pengaduan masyarakat berbasis website dan aplikasi mobile untuk melapor
 Proyek ini dibangun menggunakan susunan teknologi modern:
 - **Web Frontend:** Next.js
 - **Mobile App:** React Native (Expo)
-- **Backend API:** Express.js dan Node.js
+- **Backend API:** Express.js
 - **Bahasa:** JavaScript
