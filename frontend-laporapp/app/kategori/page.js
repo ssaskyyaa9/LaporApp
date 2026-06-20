@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { ambilToken } from "@/lib/api";
 import { jwtDecode } from "jwt-decode";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function KategoriPage() {
   const router = useRouter();

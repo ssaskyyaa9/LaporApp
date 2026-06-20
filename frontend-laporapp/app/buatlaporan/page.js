@@ -8,7 +8,7 @@ import Sidebar from "@/components/sidebaruser";
 import { ambilToken, buatLaporan } from "@/lib/api";
 import { jwtDecode } from "jwt-decode";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const KATEGORI_LIST = [
   { id: 1, label: "Infrastruktur",           aktif: "bg-[#FFF4DD] text-[#EB9B10] border-transparent",   nonaktif: "bg-white text-gray-500 border-gray-200 hover:border-orange-300" },

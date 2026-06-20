@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Sidebar from "@/components/sidebaruser";
 import { ambilProfil, perbaruiProfil, fetchUnread, ambilToken } from "@/lib/api";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function HalamanProfile() {
   const router = useRouter();

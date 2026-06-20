@@ -8,7 +8,7 @@ import SidebarAdmin from "@/components/sidebaradmin";
 import { ambilToken, ambilSemuaLaporan, ambilKategori, fetchUnread, ambilProfil, updateStatusLaporan } from "@/lib/api";
 import { jwtDecode } from "jwt-decode";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 function warnaKategori(nama = "") {
   const k = nama.toLowerCase();

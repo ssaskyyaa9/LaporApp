@@ -9,7 +9,7 @@ import { ambilToken, ambilDetailLaporan, ambilKomentar, buatKomentar, editKoment
 import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const STATUS_STYLE = {
   Menunggu:   { pill: "bg-[#E8F1FD] text-[#024BC8] border border-slate-100",        dot: "bg-blue-600"   },

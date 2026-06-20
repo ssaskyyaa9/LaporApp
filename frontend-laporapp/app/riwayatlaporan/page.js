@@ -8,7 +8,7 @@ import Sidebar from "@/components/sidebaruser";
 import { ambilToken, getLaporanSaya, hapusLaporan, ambilKategori } from "@/lib/api";
 import { jwtDecode } from "jwt-decode";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const badgeStatus = {
   Menunggu:   { bg: "bg-blue-50 text-blue-700",    label: "Menunggu" },

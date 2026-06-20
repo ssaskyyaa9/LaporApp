@@ -8,7 +8,7 @@ import SidebarAdmin from "@/components/sidebaradmin";
 import { ambilToken, ambilSemuaPengguna, hapusPengguna, buatAkunManual, fetchUnread, ambilProfil, perbaruiAkun } from "@/lib/api";
 import { jwtDecode } from "jwt-decode";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function HalamanSemuaAkun() {
   const router = useRouter();
