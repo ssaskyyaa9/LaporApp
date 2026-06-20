@@ -1,4 +1,4 @@
-const BASE_URL = "https://lapor-app-six.vercel.app";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function daftarPengguna({ username, email, password }) {
   const res = await fetch(`${BASE_URL}/api/auth/register`, {
