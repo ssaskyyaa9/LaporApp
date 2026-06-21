@@ -20,6 +20,3 @@ Proyek ini dibangun menggunakan susunan teknologi modern:
 📌Catatan:
 Project ini dibuat sebagai bentuk penilaian untuk memenuhi uji level Asesment Sumatif Akhir Semester (ASAS) dengan tema
 **Sistem Pelayanan Pengaduan Masyarakat**
-
-<img width="500" height="500" align-items="center" alt="logo LaporApp" src="https://github.com/user-attachments/assets/4b5a224d-0451-489f-9e07-da882b3796b1" />
-
