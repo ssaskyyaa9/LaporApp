@@ -320,7 +320,7 @@ export default function HalamanUtama() {
             </div>
 
             <div className="flex-1">
-              <Image src="/assets/gambar/tampilanberanda.png" alt="Pratinjau Dashboard" width={560} height={380}
+              <Image src="/assets/gambar/dashboardlanding.png" alt="Pratinjau Dashboard" width={560} height={380}
                 className="object-contain rounded-2xl shadow-xl w-full" />
             </div>
           </div>
