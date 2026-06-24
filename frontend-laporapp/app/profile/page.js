@@ -18,7 +18,6 @@ export default function HalamanProfile() {
   const [menyimpan,    setMenyimpan]    = useState(false);
   const [editMode,     setEditMode]     = useState(false);
   
-  // State statistik disesuaikan: total, proses, selesai, ditolak
   const [statistik, setStatistik] = useState({ total: 0, diproses: 0, selesai: 0, ditolak: 0 });
   const [username,     setUsername]    = useState("");
   const [email,        setEmail]       = useState("");
@@ -33,9 +32,8 @@ export default function HalamanProfile() {
       const [resProfil, totalUnread, resStatistik] = await Promise.all([
         ambilProfil(),
         fetchUnread(),
-        // Ambil data dari endpoint statistik yang sama dengan Beranda
         fetch(`${BASE_URL}/api/statistik`, { 
-          headers: { Authorization: `Bearer ${ambilToken()}` } // Pastikan fungsi ambilToken() sudah di-import jika dibutuhkan, atau sesuaikan dengan cara ambil token di profile
+          headers: { Authorization: `Bearer ${ambilToken()}` }
         }).then(r => r.json()),
       ]);
 
@@ -44,8 +42,6 @@ export default function HalamanProfile() {
       setUsername(data?.username ?? "");
       setEmail(data?.email ?? "");
       setUnread(totalUnread);
-
-      // Set statistik langsung dari response Backend
       if (resStatistik?.data) {
         setStatistik(resStatistik.data);
       }
@@ -239,7 +235,6 @@ export default function HalamanProfile() {
                   </div>
                 </div>
 
-                {/* Card Statistik - Urutan Status: Total Laporan, Diproses, Selesai, Ditolak */}
                 <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-6">
                   <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Statistik & Peninjauan Laporan</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-7">

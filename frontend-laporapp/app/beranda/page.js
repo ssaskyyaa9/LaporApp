@@ -54,6 +54,7 @@ export default function HalamanBeranda() {
         }
         setUnread(resUnread?.total_unread || 0);
         if (resProfil?.data) {
+          console.log("foto:", resProfil.data.foto);
           setUser({ username: resProfil.data.username, role: resProfil.data.role, foto: resProfil.data.foto });
         }
       } catch (err) {
@@ -160,9 +161,7 @@ export default function HalamanBeranda() {
         </header>
 
         <div className="p-6">
-          {/* BANNER BERANDA VERSI WEB: CLEAN & PROFESIONAL (ADAPTASI DARI MOBILE) */}
           <div className="relative bg-blue-600 rounded-2xl mb-5 overflow-hidden p-8 shadow-lg shadow-blue-600/10 flex items-center">
-            {/* Dekorasi Bulatan Geometris Latar Belakang */}
             <div className="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-blue-500 opacity-40 blur-sm pointer-events-none" />
             <div className="absolute right-20 -bottom-16 w-36 h-36 rounded-full bg-blue-700 opacity-60 pointer-events-none" />
             
@@ -176,12 +175,8 @@ export default function HalamanBeranda() {
                 Masyarakat yang Lebih Baik
               </h2>
 
-              <p className="text-blue-100 text-xs leading-relaxed mb-1">
-                Laporkan keluhan atau masalah di sekitarmu dengan mudah dan cepat.
-              </p> 
-              <p className="text-blue-200 text-xs font-medium">
-                Terima kasih telah bergabung dan mempercayai LaporApp.
-              </p> 
+              <p className="text-blue-100 text-xs leading-relaxed mb-1"> Laporkan keluhan atau masalah di sekitarmu dengan mudah dan cepat. </p> 
+              <p className="text-blue-200 text-xs font-medium"> Terima kasih telah bergabung dan mempercayai LaporApp. </p> 
             </div>
           </div>
 
@@ -192,7 +187,6 @@ export default function HalamanBeranda() {
                   <div className={`w-12 h-12 ${kartu.bg} rounded-full flex items-center justify-center shrink-0`}>
                     <Image src={kartu.icon} alt={kartu.label} width={kartu.iconSize} height={kartu.iconSize} />
                   </div>
-
                   <span className={`text-2xl font-bold ${kartu.warna}`}> {memuat ? "0" : kartu.nilai} </span>
                 </div>
 
@@ -259,7 +253,7 @@ export default function HalamanBeranda() {
 
                       <div className="w-25 h-23 rounded-xl overflow-hidden bg-gray-100 shrink-0 mr-1">
                         {item.gambar ? (
-                          <img src={`${BASE_URL}/uploads/${item.gambar}`} alt={item.judul} className="w-full h-full object-cover" />
+                          <img src={`${BASE_URL}/uploads/${user.foto}`} alt={item.judul} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-gray-100">
                             <Image source="/assets/icons/buatlaporan.png" alt="no img" width={24} height={24} className="opacity-30" />
