@@ -253,7 +253,7 @@ export default function HalamanBeranda() {
 
                       <div className="w-25 h-23 rounded-xl overflow-hidden bg-gray-100 shrink-0 mr-1">
                         {item.gambar ? (
-                          <img src={`${BASE_URL}/uploads/${user.foto}`} alt={item.judul} className="w-full h-full object-cover" />
+                          <img src={`${BASE_URL}/uploads/${item.gambar}`} alt={item.judul} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-gray-100">
                             <Image source="/assets/icons/buatlaporan.png" alt="no img" width={24} height={24} className="opacity-30" />
