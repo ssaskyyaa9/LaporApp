@@ -225,7 +225,7 @@ export async function updateProfile(req, res) {
                 newFoto = await uploadToImageKit(req.file)
                 console.log("UPLOAD BERHASIL:", newFoto)
             } catch (uploadError) {
-                console.error("UPLOAD ERROR:", uploadError.message)  // ← tambah ini
+                console.error("UPLOAD ERROR:", uploadError.message)
                 return res.status(500).json({ message: "Gagal upload foto: " + uploadError.message })
             }
         }
@@ -250,7 +250,7 @@ export async function updateProfile(req, res) {
         })
 
     } catch (error) {
-        console.error("UPDATE PROFILE ERROR:", error.message)  // ← dan ini
+        console.error("UPDATE PROFILE ERROR:", error.message)
         res.status(500).json({
             message: error.message
         })

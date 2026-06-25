@@ -27,6 +27,8 @@ export const uploadToImageKit = async (file) => {
     urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
   });
 
+  console.log("IMAGEKIT METHODS:", Object.getOwnPropertyNames(Object.getPrototypeOf(imagekit)));
+
   const response = await imagekit.uploadFile({
     file: file.buffer,
     fileName: `${Date.now()}-${file.originalname}`,
