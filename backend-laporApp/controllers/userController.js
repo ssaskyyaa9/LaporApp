@@ -217,7 +217,11 @@ export async function updateProfile(req, res) {
 
         const newUsername = username || user[0].username
         const newEmail = email || user[0].email
-        const newFoto = req.file ? req.file.filename : user[0].foto
+        let newFoto = user[0].foto
+        if (req.file) {
+            const { uploadToImageKit } = await import("../middlewares/uploadMiddleware.js")
+            newFoto = await uploadToImageKit(req.file)
+        }
 
         let newPassword = user[0].password
         if (password) {
