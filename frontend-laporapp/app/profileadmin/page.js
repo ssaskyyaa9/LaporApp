@@ -165,7 +165,7 @@ export default function HalamanProfileAdmin() {
                     {fotoPreview ? (
                       <img src={fotoPreview} alt="preview" className="w-full h-full object-cover" />
                     ) : profil?.foto ? (
-                      <img src={`${BASE_URL}/uploads/${profil.foto}`} alt="foto" className="w-full h-full object-cover" />
+                      <img src={user.foto} alt="foto" className="w-full h-full object-cover" />
                     ) : (
                       (profil?.username || "A").charAt(0).toUpperCase()
                     )}

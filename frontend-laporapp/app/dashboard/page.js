@@ -234,7 +234,7 @@ export default function HalamanDashboard() {
               <button onClick={() => setDropdownTerbuka(!dropdownTerbuka)}
                 className="flex items-center gap-2 hover:bg-gray-50 px-2 py-1 rounded-xl transition-colors">
                 <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold shrink-0 overflow-hidden">
-                  {user.foto ? <img src={`${BASE_URL}/uploads/${user.foto}`} alt="foto" className="w-full h-full object-cover" /> : inisial}
+                  {user.foto ? <img src={user.foto} alt="foto" className="w-full h-full object-cover" /> : inisial}
                 </div>
                 <span className="text-sm font-semibold text-gray-700 hidden md:block">{user.username}</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -248,7 +248,7 @@ export default function HalamanDashboard() {
                   <div className="px-4 py-3 border-b border-gray-100">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold overflow-hidden">
-                        {user.foto ? <img src={`${BASE_URL}/uploads/${user.foto}`} alt="foto" className="w-full h-full object-cover" /> : inisial}
+                        {user.foto ? <img src={user.foto} alt="foto" className="w-full h-full object-cover" /> : inisial}
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-gray-800">{user.username}</p>

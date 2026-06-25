@@ -220,7 +220,7 @@ export default function HalamanDetailLaporan() {
                 className="flex items-center gap-2 hover:bg-gray-50 px-2 py-1 rounded-xl transition-colors">
                 <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold shrink-0 overflow-hidden">
                   {user.foto
-                    ? <img src={`${BASE_URL}/uploads/${user.foto}`} alt="foto" className="w-full h-full object-cover" />
+                    ? <img src={user.foto} alt="foto" className="w-full h-full object-cover" />
                     : user.username?.charAt(0).toUpperCase()}
                 </div>
                 <span className="text-sm font-semibold text-gray-700 hidden md:block">{user.username}</span>
@@ -236,7 +236,7 @@ export default function HalamanDetailLaporan() {
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold overflow-hidden">
                         {user.foto
-                          ? <img src={`${BASE_URL}/uploads/${user.foto}`} alt="foto" className="w-full h-full object-cover" />
+                          ? <img src={user.foto} alt="foto" className="w-full h-full object-cover" />
                           : user.username?.charAt(0).toUpperCase()}
                       </div>
 
@@ -450,11 +450,7 @@ export default function HalamanDetailLaporan() {
               {laporan.gambar && (
                 <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden cursor-zoom-in" onClick={() => setImgZoom(true)}>
                   <div className="relative h-80 group">
-                    <img
-                      src={`${BASE_URL}/uploads/${laporan.gambar}`}
-                      alt={laporan.judul}
-                      className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-500"
-                    />
+                    <img src={`${BASE_URL}/uploads/${laporan.gambar}`} alt={laporan.judul} className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-500" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2 text-xs font-semibold text-gray-700">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
