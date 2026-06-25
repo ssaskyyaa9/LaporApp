@@ -1,4 +1,4 @@
-import { ImageKit } from "@imagekit/nodejs";
+import ImageKit from "@imagekit/nodejs";
 import multer from "multer";
 import connection from "../database.js";
 import bcrypt from "bcrypt";
@@ -21,15 +21,7 @@ export const upload = multer({
 });
 
 export const uploadToImageKit = async (file) => {
-  console.log("CEK TOKEN DI RAILWAY:", {
-    pub: process.env.IMAGEKIT_PUBLIC_KEY ? "Ada" : "Kosong/Undefined",
-    priv: process.env.IMAGEKIT_PRIVATE_KEY ? "Ada" : "Kosong/Undefined",
-    end: process.env.IMAGEKIT_URL_ENDPOINT ? "Ada" : "Kosong/Undefined"
-  });
-
-  const ImageKitClass = ImageKit.default || ImageKit;
-  
-  const imagekit = new ImageKitClass({
+  const imagekit = new ImageKit({
     publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
     privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
     urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
