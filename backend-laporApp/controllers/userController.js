@@ -218,9 +218,16 @@ export async function updateProfile(req, res) {
         const newUsername = username || user[0].username
         const newEmail = email || user[0].email
         let newFoto = user[0].foto
+
         if (req.file) {
-            const { uploadToImageKit } = await import("../middlewares/uploadMiddleware.js")
-            newFoto = await uploadToImageKit(req.file)
+            try {
+                const { uploadToImageKit } = await import("../middlewares/uploadMiddleware.js")
+                newFoto = await uploadToImageKit(req.file)
+                console.log("UPLOAD BERHASIL:", newFoto)
+            } catch (uploadError) {
+                console.error("UPLOAD ERROR:", uploadError.message)  // ← tambah ini
+                return res.status(500).json({ message: "Gagal upload foto: " + uploadError.message })
+            }
         }
 
         let newPassword = user[0].password
@@ -243,6 +250,7 @@ export async function updateProfile(req, res) {
         })
 
     } catch (error) {
+        console.error("UPDATE PROFILE ERROR:", error.message)  // ← dan ini
         res.status(500).json({
             message: error.message
         })
