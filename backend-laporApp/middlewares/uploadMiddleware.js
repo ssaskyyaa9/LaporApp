@@ -1,4 +1,4 @@
-import ImageKit from "@imagekit/nodejs";
+import { ImageKit } from "@imagekit/nodejs";
 import multer from "multer";
 
 const imagekit = new ImageKit({
