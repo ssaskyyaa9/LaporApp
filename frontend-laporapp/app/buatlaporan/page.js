@@ -244,7 +244,7 @@ function IsiHalamanBuatLaporan() {
 
           if (d.gambar) {
             setGambarLama(d.gambar);
-            setGambarPreviews([`${BASE_URL}/uploads/${d.gambar}`]);
+            setGambarPreviews([d.gambar]);
           }
         }
       } catch (err) {

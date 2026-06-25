@@ -233,7 +233,7 @@ export default function HalamanDataLaporan() {
                           <td className="px-4 py-3">
                             <div className="w-14 h-10 rounded-lg overflow-hidden bg-gray-100 border border-gray-200 flex items-center justify-center shrink-0">
                               {l.gambar ? (
-                                <img src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${l.gambar}`} alt="" className="w-full h-full object-cover" />
+                                <img src={l.gambar} alt="" className="w-full h-full object-cover" />
                               ) : (
                                 <span className="text-[10px] text-gray-400">No Photo</span>
                               )}

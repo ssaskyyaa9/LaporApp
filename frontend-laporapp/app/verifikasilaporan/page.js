@@ -297,7 +297,7 @@ export default function HalamanVerifikasi() {
                           <td className="px-4 py-3">
                             <div className="w-14 h-10 rounded-lg overflow-hidden bg-gray-100 border border-gray-200 flex items-center justify-center shrink-0">
                               {l.gambar ? (
-                                <img src={`${BASE_URL}/uploads/${l.gambar}`} alt="" className="w-full h-full object-cover" />
+                                <img src={l.gambar} alt="" className="w-full h-full object-cover" />
                               ) : (
                                 <svg className="w-5 h-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>

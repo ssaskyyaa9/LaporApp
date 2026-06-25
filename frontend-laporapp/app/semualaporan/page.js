@@ -277,7 +277,7 @@ export default function HalamanSemuaLaporan() {
                   <div key={item.id_laporan} className="bg-white rounded-2xl shadow-sm border border-gray-100 flex items-stretch overflow-hidden">
                     <div className="w-44 shrink-0 m-3 rounded-xl overflow-hidden bg-gray-100" style={{ minHeight: 120 }}>
                       {item.gambar ? (
-                        <img src={`${BASE_URL}/uploads/${item.gambar}`} alt={item.judul}
+                        <img src={item.gambar} alt={item.judul}
                           className="w-full h-full object-cover" style={{ minHeight: 120 }} />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-gray-50" style={{ minHeight: 120 }}>

@@ -450,7 +450,7 @@ export default function HalamanDetailLaporan() {
               {laporan.gambar && (
                 <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden cursor-zoom-in" onClick={() => setImgZoom(true)}>
                   <div className="relative h-80 group">
-                    <img src={`${BASE_URL}/uploads/${laporan.gambar}`} alt={laporan.judul} className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-500" />
+                    <img src={laporan.gambar} alt={laporan.judul} className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-500" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2 text-xs font-semibold text-gray-700">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -519,7 +519,7 @@ export default function HalamanDetailLaporan() {
 
       {imgZoom && laporan?.gambar && (
         <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-6 cursor-zoom-out" onClick={() => setImgZoom(false)}>
-          <img src={`${BASE_URL}/uploads/${laporan.gambar}`} alt={laporan?.judul} className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl" />
+          <img src={laporan.gambar} alt={laporan?.judul} className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl" />
           <button onClick={() => setImgZoom(false)} className="absolute top-5 right-5 w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center justify-center text-white transition-colors">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
