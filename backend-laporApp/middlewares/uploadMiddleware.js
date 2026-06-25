@@ -1,4 +1,4 @@
-import ImageKit from "@imagekit/nodejs";
+import { ImageKit } from "@imagekit/nodejs";
 import multer from "multer";
 import connection from "../database.js";
 import bcrypt from "bcrypt";
@@ -27,7 +27,7 @@ export const uploadToImageKit = async (file) => {
     urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
   });
 
-  const response = await imagekit.upload({
+  const response = await imagekit.uploadFile({
     file: file.buffer,
     fileName: `${Date.now()}-${file.originalname}`,
     folder: "/laporapp",
