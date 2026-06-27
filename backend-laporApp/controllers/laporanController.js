@@ -97,6 +97,7 @@ export async function createLaporan(req, res) {
   const id_user = req.user.id;
   try {
     const { id_kategori, judul, deskripsi, lokasi } = req.body;
+    console.log("CREATE LAPORAN - file:", req.file);
 
     if (!id_kategori || !judul || !deskripsi || !lokasi) {
       return res.status(400).json({ message: "semua field wajib diisi" });
@@ -104,6 +105,7 @@ export async function createLaporan(req, res) {
 
     const { uploadToImageKit } = await import("../middlewares/uploadMiddleware.js");
     const gambar = req.file ? await uploadToImageKit(req.file) : null;
+    console.log("GAMBAR URL:", gambar);
 
     const [result] = await connection.query(
       `INSERT INTO laporan (id_users, id_kategori, judul, deskripsi, gambar, lokasi)
