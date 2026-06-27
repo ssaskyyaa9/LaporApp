@@ -102,7 +102,8 @@ export async function createLaporan(req, res) {
       return res.status(400).json({ message: "semua field wajib diisi" });
     }
 
-    const gambar = req.file ? req.file.filename : null;
+    const { uploadToImageKit } = await import("../middlewares/uploadMiddleware.js");
+    const gambar = req.file ? await uploadToImageKit(req.file) : null;
 
     const [result] = await connection.query(
       `INSERT INTO laporan (id_users, id_kategori, judul, deskripsi, gambar, lokasi)
@@ -110,7 +111,6 @@ export async function createLaporan(req, res) {
       [req.user.id, id_kategori, judul, deskripsi, gambar, lokasi]
     );
 
-    // Notifikasi ke semua admin & super admin
     const [admins] = await connection.query(
       "SELECT id FROM users WHERE role IN ('admin', 'super admin')"
     );
@@ -169,7 +169,8 @@ export async function updateLaporan(req, res) {
         }
 
         const { id_kategori, judul, deskripsi, lokasi } = req.body
-        const gambar = req.file ? req.file.filename : existing[0].gambar
+        const { uploadToImageKit } = await import("../middlewares/uploadMiddleware.js");
+        const gambar = req.file ? await uploadToImageKit(req.file) : existing[0].gambar
 
         await connection.query(
             `UPDATE laporan 
